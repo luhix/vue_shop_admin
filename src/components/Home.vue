@@ -77,8 +77,6 @@ export default {
     logout () {
       window.sessionStorage.clear()
       this.$router.push('/login')
-<<<<<<< HEAD
-=======
     },
     toggleButton () {
       this.isCollapse = !this.isCollapse
@@ -94,16 +92,12 @@ export default {
       console.log(res)
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menuList = res.data
->>>>>>> user
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-<<<<<<< HEAD
-
-=======
 .home-container{
   height: 100%;
 }
@@ -147,5 +141,4 @@ export default {
   letter-spacing: 0.2em;
   cursor: pointer;
 }
->>>>>>> user
 </style>
