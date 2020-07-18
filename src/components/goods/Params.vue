@@ -37,9 +37,6 @@
           <el-button type="primary" :disabled="isBtnDisabled" @click="addAttr">添加参数</el-button>
           <!-- 动态表格 -->
           <el-table :data="manyTableData" border striper>
-<<<<<<< HEAD
-            <el-table-column type="expand"></el-table-column>
-=======
             <el-table-column type="expand">
               <template slot-scope="scope">
                 <el-tag v-for="(item, index) in scope.row.attr_vals"
@@ -60,7 +57,6 @@
                 <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)">+ New Tag</el-button>
               </template>
             </el-table-column>
->>>>>>> master
             <el-table-column type="index"></el-table-column>
             <el-table-column label="参数名称" prop="attr_name"></el-table-column>
             <el-table-column label="操作">
@@ -75,9 +71,6 @@
           <el-button type="primary" :disabled="isBtnDisabled" @click="addAttr">添加属性</el-button>
            <!-- 静态表格 -->
           <el-table :data="onlyTableData" border striper>
-<<<<<<< HEAD
-            <el-table-column type="expand"></el-table-column>
-=======
             <el-table-column type="expand">
               <template slot-scope="scope">
                 <el-tag v-for="(item, index) in scope.row.attr_vals"
@@ -98,7 +91,6 @@
                 <el-button v-else class="button-new-tag" size="small" @click="showInput(scope.row)">+ New Tag</el-button>
               </template>
             </el-table-column>
->>>>>>> master
             <el-table-column type="index"></el-table-column>
             <el-table-column label="参数名称" prop="attr_name"></el-table-column>
             <el-table-column label="操作">
@@ -223,11 +215,8 @@ export default {
     async getParamsData () {
       if (this.selectCateKeys.length !== 3) {
         this.selectCateKeys = []
-<<<<<<< HEAD
-=======
         this.manyTableData = []
         this.onlyTableData = []
->>>>>>> master
         return
       }
       console.log(this.selectCateKeys)
@@ -237,8 +226,6 @@ export default {
         return this.$message.error('获取父级分类失败')
       }
       console.log(res.data)
-<<<<<<< HEAD
-=======
       res.data.forEach(item => {
         item.attr_vals = item.attr_vals ? item.attr_vals.split(' ') : []
         // 控制文本框的显示和隐藏
@@ -247,7 +234,6 @@ export default {
         item.inputValue = ''
       })
       console.log(res.data)
->>>>>>> master
       if (this.activeName === 'many') {
         this.manyTableData = res.data
       } else {
@@ -325,8 +311,6 @@ export default {
       }
       this.$message.success('删除成功！')
       this.getParamsData()
-<<<<<<< HEAD
-=======
     },
     // 文本框失去焦点或者按下按钮
     async handleInputConfirm (row) {
@@ -369,7 +353,6 @@ export default {
         return this.$message.error('修改参数失败')
       }
       this.$message.success('修改参数成功！')
->>>>>>> master
     }
   },
   computed: {
@@ -400,13 +383,10 @@ export default {
 .cat_opt {
   margin: 15px 0;
 }
-<<<<<<< HEAD
-=======
 .el-tag {
   margin: 5px;
 }
 .input-new-tag {
   width: 150px;
 }
->>>>>>> master
 </style>
