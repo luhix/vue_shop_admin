@@ -3,20 +3,32 @@ import App from './App.vue'
 import router from './router'
 import './plugins/element.js'
 import VueQuillEditor from 'vue-quill-editor'
+import NProgress from 'nprogress'
+
 // 导入全局样式表
 import './assets/css/global.css'
 import './assets/fonts/iconfont.css'
 import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
+import 'nprogress/nprogress.css'
 
 import axios from 'axios'
 // 配置请求的根路径
 axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
 // 拦截器
 axios.interceptors.request.use(config => {
+  // 在 resquest 中显示进度条
+  NProgress.start()
   console.log(config)
   config.headers.Authorization = window.sessionStorage.getItem('token')
+  // 在最后必须 return config
+  return config
+})
+axios.interceptors.response.use(config => {
+  // 在 response 中隐藏进度条
+  NProgress.done()
+  console.log(config)
   // 在最后必须 return config
   return config
 })
